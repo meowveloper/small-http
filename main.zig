@@ -16,7 +16,9 @@ pub fn main () !void {
 
     var request_buffer: [400]u8 = undefined;
     @memset(request_buffer[0..], 0);
-    try Request.read_request(io, connection, request_buffer[0..]);
+    try Request.read_request(io, connection, request_buffer[0..request_buffer.len]);
 
-    std.debug.print("{s}\n", .{request_buffer});
+    const request = Request.parse_request(request_buffer[0..request_buffer.len]);
+
+    std.debug.print("{any}\n", .{request});
 }

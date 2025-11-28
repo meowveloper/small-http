@@ -22,7 +22,7 @@ pub const Server = struct {
     }
 
     pub fn listen (self: Server) !std.Io.net.Server {
-        std.debug.print("server listening on {s}:{any}", .{self.host, self.port});
+        std.debug.print("server listening on {s}:{any}\n", .{self.host, self.port});
         return try self.addr.listen(
             self.io,
             .{.mode = Socket.Mode.stream, .protocol = Protocol.tcp}
