@@ -54,3 +54,4 @@ pub fn read_request (io: std.Io, conn: Stream, buffer: []u8) !void {
     const input = try reader.interface.peekArray(length);
     @memcpy(buffer[0..length], input[0..length]);
 }
+
